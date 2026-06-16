@@ -155,16 +155,152 @@
     </div>
 
     <main>
-        <div class="grid-container">
-            
-            <!-- Section 1: Computer Systems -->
-            <div class="card">
-                <h2>1. Computer Systems, CPU & Assembly</h2>
-                <p>The Central Processing Unit (CPU) executes instructions using the <strong>Fetch-Decode-Execute (FDE)</strong> cycle.</p>
-                <ul>
-                    <li><strong>Computer Specs:</strong> CPU performance is affected by <em>Clock Speed</em> (Hz), <em>Number of Cores</em>, and <em>Cache Size</em>.</li>
+       <div class="card full-width">
+                <h2>1. The CPU & The Fetch-Decode-Execute Cycle</h2>
+                <p>The Central Processing Unit (CPU) executes instructions using the FDE cycle. Click the <strong>Step Forward</strong> button below to watch exactly how data flows between the registers during a real program execution!</p>
+                
+                <div style="background: #f8f9fa; border: 2px solid #2c3e50; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-around;">
+                        
+                        <div style="flex: 1; min-width: 250px; border: 3px solid #e74c3c; border-radius: 8px; padding: 1rem; background: white;">
+                            <h3 style="margin-top: 0; color: #e74c3c; text-align: center;">Central Processing Unit (CPU)</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div id="reg-pc" style="padding: 10px; border: 2px solid #bdc3c7; border-radius: 4px; text-align: center;"><strong>PC</strong><br><span id="val-pc">0</span></div>
+                                <div id="reg-mar" style="padding: 10px; border: 2px solid #bdc3c7; border-radius: 4px; text-align: center;"><strong>MAR</strong><br><span id="val-mar"></span></div>
+                                <div id="reg-mdr" style="padding: 10px; border: 2px solid #bdc3c7; border-radius: 4px; text-align: center;"><strong>MDR</strong><br><span id="val-mdr"></span></div>
+                                <div id="reg-cir" style="padding: 10px; border: 2px solid #bdc3c7; border-radius: 4px; text-align: center;"><strong>CIR</strong><br><span id="val-cir"></span></div>
+                                <div id="reg-acc" style="padding: 10px; border: 2px solid #bdc3c7; border-radius: 4px; text-align: center; grid-column: span 2;"><strong>Accumulator (ACC)</strong><br><span id="val-acc"></span></div>
+                                <div id="reg-cu" style="padding: 10px; background: #ecf0f1; border-radius: 4px; text-align: center; font-weight: bold; grid-column: span 2;">Control Unit (CU)</div>
+                                <div id="reg-alu" style="padding: 10px; background: #ecf0f1; border-radius: 4px; text-align: center; font-weight: bold; grid-column: span 2;">Arithmetic Logic Unit (ALU)</div>
+                            </div>
+                        </div>
+
+                        <div style="flex: 1; min-width: 200px; border: 3px solid #3498db; border-radius: 8px; padding: 1rem; background: white;">
+                            <h3 style="margin-top: 0; color: #3498db; text-align: center;">Main Memory (RAM)</h3>
+                            <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                                <tr><th style="border-bottom: 2px solid #ccc;">Address</th><th style="border-bottom: 2px solid #ccc;">Data/Instruction</th></tr>
+                                <tr id="ram-0"><td>0</td><td>LOAD 4</td></tr>
+                                <tr id="ram-1"><td>1</td><td>ADD 5</td></tr>
+                                <tr id="ram-2"><td>2</td><td>STORE 6</td></tr>
+                                <tr id="ram-3"><td>3</td><td>HALT</td></tr>
+                                <tr id="ram-4"><td>4</td><td>10</td></tr>
+                                <tr id="ram-5"><td>5</td><td>25</td></tr>
+                                <tr id="ram-6"><td>6</td><td id="val-ram6">0</td></tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <div id="fde-log" style="font-size: 1.2rem; font-weight: bold; color: #2c3e50; min-height: 3rem; margin-bottom: 1rem; padding: 0.5rem; background: #ecf0f1; border-left: 5px solid #f1c40f;">
+                            Press "Step Forward" to start the FDE cycle.
+                        </div>
+                        <button onclick="nextStep()" style="padding: 10px 20px; font-size: 1rem; font-weight: bold; background: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Step Forward &rarr;</button>
+                        <button onclick="resetFDE()" style="padding: 10px 20px; font-size: 1rem; font-weight: bold; background: #95a5a6; color: white; border: none; border-radius: 4px; cursor: pointer;">Reset</button>
+                    </div>
+
+                </div>
+
+                <script>
+                    let currentStep = -1;
+                    const defaultStyle = "2px solid #bdc3c7";
+                    const activeStyle = "4px solid #f1c40f";
+                    const activeBg = "#fdf3c6";
+
+                    // The pre-scripted sequence of exactly what happens in the cycle
+                    const fdeSteps = [
+                        { pc: "0", mar: "", mdr: "", cir: "", acc: "", ramHighlight: -1, regHighlight: "reg-pc", msg: "FETCH: The Program Counter (PC) starts at memory address 0." },
+                        { pc: "0", mar: "0", mdr: "", cir: "", acc: "", ramHighlight: -1, regHighlight: "reg-mar", msg: "FETCH: The PC value is copied to the Memory Address Register (MAR)." },
+                        { pc: "0", mar: "0", mdr: "LOAD 4", cir: "", acc: "", ramHighlight: 0, regHighlight: "reg-mdr", msg: "FETCH: The CPU travels to RAM address 0, fetches the instruction, and places it in the Memory Data Register (MDR)." },
+                        { pc: "0", mar: "0", mdr: "LOAD 4", cir: "LOAD 4", acc: "", ramHighlight: -1, regHighlight: "reg-cir", msg: "FETCH: The instruction is copied from the MDR into the Current Instruction Register (CIR) so the CPU can use it." },
+                        { pc: "1", mar: "0", mdr: "LOAD 4", cir: "LOAD 4", acc: "", ramHighlight: -1, regHighlight: "reg-pc", msg: "FETCH: The PC increments by 1. It is now pointing at the next instruction for later!" },
+                        { pc: "1", mar: "0", mdr: "LOAD 4", cir: "LOAD 4", acc: "", ramHighlight: -1, regHighlight: "reg-cu", msg: "DECODE: The Control Unit (CU) splits 'LOAD 4'. It prepares to load the data located at address 4." },
+                        { pc: "1", mar: "4", mdr: "10", cir: "LOAD 4", acc: "10", ramHighlight: 4, regHighlight: "reg-acc", msg: "EXECUTE: The CPU retrieves the value at address 4 (which is 10) and loads it into the Accumulator (ACC)." },
+                        
+                        { pc: "1", mar: "1", mdr: "", cir: "", acc: "10", ramHighlight: -1, regHighlight: "reg-mar", msg: "FETCH: Cycle 2 starts! The current PC value (1) is copied to the MAR." },
+                        { pc: "1", mar: "1", mdr: "ADD 5", cir: "", acc: "10", ramHighlight: 1, regHighlight: "reg-mdr", msg: "FETCH: The instruction at RAM address 1 is fetched into the MDR." },
+                        { pc: "1", mar: "1", mdr: "ADD 5", cir: "ADD 5", acc: "10", ramHighlight: -1, regHighlight: "reg-cir", msg: "FETCH: The instruction is copied to the CIR." },
+                        { pc: "2", mar: "1", mdr: "ADD 5", cir: "ADD 5", acc: "10", ramHighlight: -1, regHighlight: "reg-pc", msg: "FETCH: The PC increments to 2." },
+                        { pc: "2", mar: "1", mdr: "ADD 5", cir: "ADD 5", acc: "10", ramHighlight: -1, regHighlight: "reg-cu", msg: "DECODE: The CU decodes 'ADD 5'. It prepares to add the value inside address 5 to the Accumulator." },
+                        { pc: "2", mar: "5", mdr: "25", cir: "ADD 5", acc: "35", ramHighlight: 5, regHighlight: "reg-alu", msg: "EXECUTE: The Arithmetic Logic Unit (ALU) adds address 5's value (25) to the ACC (10). The ACC is now 35!" },
+                        
+                        { pc: "2", mar: "2", mdr: "", cir: "", acc: "35", ramHighlight: -1, regHighlight: "reg-mar", msg: "FETCH: Cycle 3 starts! The current PC value (2) is copied to the MAR." },
+                        { pc: "2", mar: "2", mdr: "STORE 6", cir: "", acc: "35", ramHighlight: 2, regHighlight: "reg-mdr", msg: "FETCH: The instruction at RAM address 2 is fetched into the MDR." },
+                        { pc: "2", mar: "2", mdr: "STORE 6", cir: "STORE 6", acc: "35", ramHighlight: -1, regHighlight: "reg-cir", msg: "FETCH: The instruction is copied to the CIR." },
+                        { pc: "3", mar: "2", mdr: "STORE 6", cir: "STORE 6", acc: "35", ramHighlight: -1, regHighlight: "reg-pc", msg: "FETCH: The PC increments to 3." },
+                        { pc: "3", mar: "2", mdr: "STORE 6", cir: "STORE 6", acc: "35", ramHighlight: -1, regHighlight: "reg-cu", msg: "DECODE: The CU decodes 'STORE 6'. It prepares to save the Accumulator's value into RAM address 6." },
+                        { pc: "3", mar: "6", mdr: "35", cir: "STORE 6", acc: "35", ramHighlight: 6, regHighlight: "val-ram6", msg: "EXECUTE: The ACC value (35) is sent across the data bus and permanently saved into RAM address 6." },
+                        
+                        { pc: "3", mar: "3", mdr: "HALT", cir: "HALT", acc: "35", ramHighlight: 3, regHighlight: "reg-cu", msg: "HALT: The CPU fetches and decodes 'HALT'. The Control Unit stops the clock. Program Complete!" }
+                    ];
+
+                    function clearHighlights() {
+                        const registers = ["reg-pc", "reg-mar", "reg-mdr", "reg-cir", "reg-acc", "reg-cu", "reg-alu", "val-ram6"];
+                        registers.forEach(id => {
+                            let el = document.getElementById(id);
+                            if(el) {
+                                el.style.border = (id === "reg-cu" || id === "reg-alu" || id === "val-ram6") ? "none" : defaultStyle;
+                                el.style.background = (id === "reg-cu" || id === "reg-alu") ? "#ecf0f1" : (id === "val-ram6" ? "transparent" : "transparent");
+                            }
+                        });
+                        for(let i=0; i<=6; i++) {
+                            document.getElementById("ram-" + i).style.background = "transparent";
+                            document.getElementById("ram-" + i).style.fontWeight = "normal";
+                        }
+                    }
+
+                    function nextStep() {
+                        currentStep++;
+                        if (currentStep >= fdeSteps.length) return; // Prevent out of bounds
+                        
+                        let s = fdeSteps[currentStep];
+                        
+                        // Update Texts
+                        document.getElementById("val-pc").innerText = s.pc;
+                        document.getElementById("val-mar").innerText = s.mar;
+                        document.getElementById("val-mdr").innerText = s.mdr;
+                        document.getElementById("val-cir").innerText = s.cir;
+                        document.getElementById("val-acc").innerText = s.acc;
+                        document.getElementById("fde-log").innerText = s.msg;
+                        
+                        // Special case for storing to RAM
+                        if(currentStep >= 18) document.getElementById("val-ram6").innerText = "35";
+
+                        clearHighlights();
+
+                        // Highlight Active Register
+                        if (s.regHighlight) {
+                            let target = document.getElementById(s.regHighlight);
+                            if(target) {
+                                target.style.border = activeStyle;
+                                target.style.background = activeBg;
+                            }
+                        }
+
+                        // Highlight RAM row
+                        if (s.ramHighlight !== -1) {
+                            let row = document.getElementById("ram-" + s.ramHighlight);
+                            row.style.background = "#d6eaf8";
+                            row.style.fontWeight = "bold";
+                        }
+                    }
+
+                    function resetFDE() {
+                        currentStep = -1;
+                        document.getElementById("val-pc").innerText = "0";
+                        document.getElementById("val-mar").innerText = "";
+                        document.getElementById("val-mdr").innerText = "";
+                        document.getElementById("val-cir").innerText = "";
+                        document.getElementById("val-acc").innerText = "";
+                        document.getElementById("val-ram6").innerText = "0";
+                        document.getElementById("fde-log").innerText = 'Press "Step Forward" to start the FDE cycle.';
+                        clearHighlights();
+                    }
+                </script>
+                <ul style="margin-top: 1.5rem;">
+                    <li><strong>Computer Specs:</strong> CPU performance is heavily affected by <em>Clock Speed</em> (Hz), <em>Number of Cores</em>, and <em>Cache Size</em>.</li>
                     <li><strong>System Software:</strong> Controls the hardware. Includes the Operating System (OS) and utility programs.</li>
-                    <li><strong>Assembly Language:</strong> A low-level programming language that uses mnemonics (like <code>ADD</code>, <code>SUB</code>). It requires an <em>Assembler</em> to translate it into machine code (binary) before the CPU can execute it.</li>
+                    <li><strong>Assembly Language:</strong> A low-level programming language using mnemonics (like <code>ADD</code>, <code>LOAD</code>). It requires an <em>Assembler</em> to translate it into machine code (binary) before the CPU can run it.</li>
                 </ul>
             </div>
 
