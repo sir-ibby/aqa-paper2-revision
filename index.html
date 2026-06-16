@@ -184,22 +184,60 @@
                 </ul>
             </div>
 
-          <div class="card full-width">
+         <div class="card full-width">
                 <h2>3. Logic Gates & Flowcharts</h2>
                 <div class="grid-container" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    
                     <div>
                         <h3>Boolean Logic Gates</h3>
-                        <ul>
-                            <li><strong>AND Gate:</strong> Output is 1 <em>only if</em> both inputs are 1.</li>
-                            <li><strong>OR Gate:</strong> Output is 1 if <em>at least one</em> input is 1.</li>
-                            <li><strong>NOT Gate:</strong> Inverts the input (1 becomes 0).</li>
-                        </ul>
+                        <table style="width: 100%; text-align: center; margin-top: 0;">
+                            <tr>
+                                <td style="width: 90px;">
+                                    <svg width="80" height="60" viewBox="0 0 80 60">
+                                        <line x1="5" y1="20" x2="20" y2="20" stroke="#2c3e50" stroke-width="2" />
+                                        <line x1="5" y1="40" x2="20" y2="40" stroke="#2c3e50" stroke-width="2" />
+                                        <line x1="55" y1="30" x2="75" y2="30" stroke="#2c3e50" stroke-width="2" />
+                                        <path d="M 20 10 L 35 10 A 20 20 0 0 1 35 50 L 20 50 Z" stroke="#2c3e50" stroke-width="2" fill="#ecf0f1" />
+                                    </svg>
+                                </td>
+                                <td style="text-align: left;">
+                                    <strong>AND Gate:</strong><br>Output is 1 <em>only if</em> both inputs are 1.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <svg width="80" height="60" viewBox="0 0 80 60">
+                                        <line x1="5" y1="20" x2="24" y2="20" stroke="#2c3e50" stroke-width="2" />
+                                        <line x1="5" y1="40" x2="24" y2="40" stroke="#2c3e50" stroke-width="2" />
+                                        <line x1="60" y1="30" x2="75" y2="30" stroke="#2c3e50" stroke-width="2" />
+                                        <path d="M 20 10 Q 45 10 60 30 Q 45 50 20 50 Q 30 30 20 10 Z" stroke="#2c3e50" stroke-width="2" fill="#ecf0f1" />
+                                    </svg>
+                                </td>
+                                <td style="text-align: left;">
+                                    <strong>OR Gate:</strong><br>Output is 1 if <em>at least one</em> input is 1.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <svg width="80" height="60" viewBox="0 0 80 60">
+                                        <line x1="5" y1="30" x2="25" y2="30" stroke="#2c3e50" stroke-width="2" />
+                                        <line x1="60" y1="30" x2="75" y2="30" stroke="#2c3e50" stroke-width="2" />
+                                        <polygon points="25,10 50,30 25,50" stroke="#2c3e50" stroke-width="2" fill="#ecf0f1" />
+                                        <circle cx="55" cy="30" r="5" stroke="#2c3e50" stroke-width="2" fill="#ecf0f1" />
+                                    </svg>
+                                </td>
+                                <td style="text-align: left;">
+                                    <strong>NOT Gate:</strong><br>Inverts the input (1 becomes 0, 0 becomes 1).
+                                </td>
+                            </tr>
+                        </table>
                     </div>
+
                     <div>
                         <h3>Flowchart Symbols</h3>
                         <table style="width: 100%; text-align: center; margin-top: 0;">
                             <tr>
-                                <td style="width: 100px;">
+                                <td style="width: 90px;">
                                     <svg width="80" height="40">
                                         <ellipse cx="40" cy="20" rx="38" ry="18" stroke="#2c3e50" stroke-width="2" fill="#ecf0f1" />
                                     </svg>
@@ -228,10 +266,11 @@
                                         <polygon points="40,2 78,20 40,38 2,20" stroke="#2c3e50" stroke-width="2" fill="#ecf0f1" />
                                     </svg>
                                 </td>
-                                <td style="text-align: left;"><strong>Diamond:</strong> Decision (Yes/No branches)</td>
+                                <td style="text-align: left;"><strong>Diamond:</strong> Decision (Yes/No branch)</td>
                             </tr>
                         </table>
                     </div>
+
                 </div>
             </div>
 
