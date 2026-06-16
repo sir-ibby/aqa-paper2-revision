@@ -262,6 +262,56 @@
             </div>
 
         </div>
+        <div class="card">
+                <h2>6. Boolean Logic Gates</h2>
+                <p>Computers use logic gates to control the flow of electrical signals inside circuits based on true/false inputs:</p>
+                <ul>
+                    <li><strong>AND Gate:</strong> Output is <code>True (1)</code> only if <strong>ALL</strong> inputs are True.
+                        <br><em>AQA Notation:</em> <code>A AND B</code>
+                    </li>
+                    <li><strong>OR Gate:</strong> Output is <code>True (1)</code> if <strong>AT LEAST ONE</strong> input is True.
+                        <br><em>AQA Notation:</em> <code>A OR B</code>
+                    </li>
+                    <li><strong>NOT Gate:</strong> Inverts the single input. If input is 1, output is <code>0</code>.
+                        <br><em>AQA Notation:</em> <code>NOT A</code>
+                    </li>
+                </ul>
+                <h3>Standard AQA Logic Gate Symbols:</h3>
+                
+
+[Image of AND OR and NOT logic gate symbols]
+
+            </div>
+
+            <div class="card">
+                <h2>7. Translators & Program Languages</h2>
+                <p>Computers can only physically execute low-level machine code (binary). Human programmers write code in high-level languages like Python. We must use translators to bridge the gap:</p>
+                <ul>
+                    <li><strong>High-Level Language:</strong> Written in a syntax close to English (e.g., Python). It is portable across different CPU architectures but must be translated before running.</li>
+                    <li><strong>Low-Level Language:</strong> Machine code (binary strings) or Assembly language. Directly matches specific CPU hardware registers. It runs incredibly fast but is very difficult for humans to write.</li>
+                </ul>
+                <h3>The Two Main Translators:</h3>
+                <ul>
+                    <li><strong>Compiler:</strong> Translates the entire high-level source code file all at once into an executable machine code file (e.g., an <code>.exe</code> file). It takes longer to compile initially, but the final file runs instantly without needing the original software code.</li>
+                    <li><strong>Interpreter:</strong> Translates and executes high-level source code <strong>line-by-line</strong>. If it encounters a syntax error on line 10, the program runs lines 1–9 perfectly before crashing. Python uses an interpreter, making debugging significantly easier for students.</li>
+                </ul>
+            </div>
+
+            <div class="card full-width">
+                <h2>8. Network Hardware & Transmission Media</h2>
+                <p>To construct a network, physical infrastructure components must be connected to move data packets reliably:</p>
+                <ul>
+                    <li><strong>Wireless Access Point (WAP):</strong> Uses radio waves to allow wireless devices (smartphones, laptops) to connect to a wired network.</li>
+                    <li><strong>Switch:</strong> Connects devices on a Local Area Network (LAN). It reads the destination <strong>MAC address</strong> of incoming data packets and smartly forwards them <em>only</em> to the specific device that requested them, reducing data traffic congestion.</li>
+                    <li><strong>Router:</strong> Connects completely separate networks together (such as connecting your home LAN to the massive public Internet WAN). It reads the destination <strong>IP address</strong> to route data packets across paths.</li>
+                    <li><strong>NIC (Network Interface Card):</strong> An internal hardware chip built into a device that physically formats and transmits data signals over the network. It holds the device's unchangeable, unique physical MAC address.</li>
+                </ul>
+                <h3>Wired Transmission Media Types:</h3>
+                <ul>
+                    <li><strong>Copper Twisted-Pair (Ethernet):</strong> Uses electrical signals transmitted down copper wires. It is cheap, flexible, and common in schools, but signals suffer from attenuation over distances greater than 100 meters.</li>
+                    <li><strong>Fibre-Optic Cable:</strong> Transmits pulses of light down ultra-thin strands of glass. It is incredibly fast, immune to electrical interference, and can cover massive global distances without losing signal strength, but it is expensive and fragile to install.</li>
+                </ul>
+            </div>
     </main>
 
     <footer>
