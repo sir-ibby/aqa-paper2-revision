@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AQA GCSE Computer Science - Paper 2 Revision Hub</title>
+    <title>AQA GCSE Computer Science - Year 10 Revision Hub</title>
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -51,7 +51,7 @@
         }
 
         main {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
@@ -86,7 +86,7 @@
             padding-bottom: 0.5rem;
         }
 
-        ul {
+        ul, ol {
             padding-left: 1.2rem;
         }
 
@@ -147,175 +147,165 @@
 
     <header>
         <h1>AQA GCSE Computer Science</h1>
-        <p>Paper 2 Theoretical Framework Revision Hub</p>
+        <p>Year 10 Master Revision Hub</p>
     </header>
 
     <div class="alert-banner">
-        ⚠️ EXAM ALERT: Calculators are strictly NOT permitted on Paper 2. Show all working out!
+        ⚠️ EXAM ALERT: Calculators are strictly NOT permitted on AQA Paper 2. Show all working out!
     </div>
 
     <main>
         <div class="grid-container">
             
+            <!-- Section 1: Computer Systems -->
             <div class="card">
-                <h2>1. CPU Architecture & The FDE Cycle</h2>
-                <p>The Central Processing Unit (CPU) executes instructions using the <strong>Fetch-Decode-Execute</strong> cycle:</p>
+                <h2>1. Computer Systems, CPU & Assembly</h2>
+                <p>The Central Processing Unit (CPU) executes instructions using the <strong>Fetch-Decode-Execute (FDE)</strong> cycle.</p>
                 <ul>
-                    <li><strong>Fetch:</strong> The next instruction is retrieved from main memory (RAM).</li>
-                    <li><strong>Decode:</strong> The Control Unit (CU) splits and translates the instruction.</li>
-                    <li><strong>Execute:</strong> The Arithmetic Logic Unit (ALU) or system hardware carries out the processing action.</li>
-                </ul>
-                <h3>Core Hardware Components:</h3>
-                <ul>
-                    <li><strong>ALU:</strong> Executes all calculations and logic operations (<code>AND, OR, NOT</code>).</li>
-                    <li><strong>Control Unit (CU):</strong> Manages the timing and structural data control flow inside the CPU.</li>
-                    <li><strong>Registers:</strong> Super-fast internal storage slots used to hold current processing states.</li>
+                    <li><strong>Computer Specs:</strong> CPU performance is affected by <em>Clock Speed</em> (Hz), <em>Number of Cores</em>, and <em>Cache Size</em>.</li>
+                    <li><strong>System Software:</strong> Controls the hardware. Includes the Operating System (OS) and utility programs.</li>
+                    <li><strong>Assembly Language:</strong> A low-level programming language that uses mnemonics (like <code>ADD</code>, <code>SUB</code>). It requires an <em>Assembler</em> to translate it into machine code (binary) before the CPU can execute it.</li>
                 </ul>
             </div>
 
+            <!-- Section 2: Memory vs Storage -->
             <div class="card">
-                <h2>2. Memory Architecture & Volatility</h2>
-                <p>Systems rely on various tiers of memory to balance processing speed against persistence:</p>
+                <h2>2. Main Memory & Secondary Storage</h2>
+                <p>Systems rely on memory to balance speed against permanent storage:</p>
                 <ul>
-                    <li><strong>RAM (Random Access Memory):</strong> <code>Volatile</code> main memory. Stores open operating system processes and application runtime states. Loses contents on power loss.</li>
-                    <li><strong>ROM (Read-Only Memory):</strong> <code>Non-Volatile</code> startup memory. Stores immutable factory initialization boot instructions (BIOS).</li>
-                    <li><strong>Secondary Storage:</strong> Permanent non-volatile storage necessary for archiving user system programs.</li>
+                    <li><strong>RAM (Volatile):</strong> Main memory. Stores the OS and currently open programs. Loses data when powered off.</li>
+                    <li><strong>ROM (Non-Volatile):</strong> Read-only memory. Stores the boot-up instructions (BIOS).</li>
                 </ul>
-                <h3>The 3 Storage Media Types:</h3>
+                <h3>Selecting a Storage Device:</h3>
                 <ul>
-                    <li><strong>Magnetic (HDD):</strong> Mechanical spinning discs. High capacity and lower financial cost, but slower read speeds and fragile.</li>
-                    <li><strong>Solid-State (SSD):</strong> Electrical flash memory chips. Extremely high speed, energy efficient, durable, but premium cost.</li>
-                    <li><strong>Optical (DVD):</strong> Laser reflection pitting. High physical portability, but small capacity boundaries and prone to scratching.</li>
+                    <li><strong>Optical (CD/DVD):</strong> Lasers read physical pits/lands. Highly portable, low capacity, easily scratched.</li>
+                    <li><strong>Magnetic (HDD/Tape):</strong> Spinning magnetic platters. High capacity, cheap per GB, slow, moving parts break easily.</li>
+                    <li><strong>Solid-State (SSD):</strong> Electrical flash memory. Extremely fast, durable (no moving parts), expensive.</li>
                 </ul>
             </div>
 
+            <!-- Section 3: Logic & Flowcharts -->
             <div class="card full-width">
-                <h2>3. Data Representation: AQA Storage Unit Math</h2>
-                <p><strong>CRITICAL RULE:</strong> Under the AQA specification, calculations scale strictly using <strong>decimal prefixes</strong> (multiples of 1000). <code>Do not divide or multiply by 1024.</code></p>
-                
-                <div class="formula-box">
-                    Bits &rarr; (&divide;8) &rarr; Bytes &rarr; (&divide;1000) &rarr; Kilobytes (kB) &rarr; (&divide;1000) &rarr; Megabytes (MB) &rarr; (&divide;1000) &rarr; Gigabytes (GB)
+                <h2>3. Logic Gates & Flowcharts</h2>
+                <div class="grid-container" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <h3>Boolean Logic Gates</h3>
+                        <ul>
+                            <li><strong>AND Gate:</strong> Output is 1 <em>only if</em> both inputs are 1.</li>
+                            <li><strong>OR Gate:</strong> Output is 1 if <em>at least one</em> input is 1.</li>
+                            <li><strong>NOT Gate:</strong> Inverts the input (1 becomes 0).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Flowchart Symbols</h3>
+                        <ul>
+                            <li><strong>Oval:</strong> Start / Stop</li>
+                            <li><strong>Parallelogram:</strong> Input / Output</li>
+                            <li><strong>Rectangle:</strong> Process / Calculation</li>
+                            <li><strong>Diamond:</strong> Decision (Yes/No branches)</li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
 
-                <h3>Binary Bit Shifts:</h3>
+            <!-- Section 4: Algorithms -->
+            <div class="card">
+                <h2>4. Computational Thinking & Algorithms</h2>
                 <ul>
-                    <li><strong>Left Shift:</strong> Shifting bit placements by <code>n</code> places multiplies the equivalent target number evaluation by <code>2<sup>n</sup></code>.</li>
-                    <li><strong>Right Shift:</strong> Shifting bit placements by <code>n</code> places divides the equivalent target number evaluation by <code>2<sup>n</sup></code> (completely truncate/ignore any fractional remainder values).</li>
+                    <li><strong>Abstraction:</strong> Removing unnecessary details from a problem to focus on the essential features.</li>
+                    <li><strong>Decomposition:</strong> Breaking a complex problem down into smaller, more manageable sub-problems.</li>
+                    <li><strong>Algorithmic Thinking:</strong> Creating a logical, step-by-step sequence of instructions to solve a problem.</li>
+                    <li><strong>Tracing Algorithms:</strong> Using trace tables to track how the values of variables change line-by-line during program execution.</li>
                 </ul>
             </div>
 
+            <!-- Section 5: Search & Sort -->
             <div class="card">
-                <h2>4. Computer Network Design & Topologies</h2>
-                <p>A network setup dictates how interconnected devices physically or logically exchange parameters:</p>
+                <h2>5. Searching & Sorting Algorithms</h2>
+                <h3>Searching:</h3>
                 <ul>
-                    <li><strong>Star Topology:</strong> All network endpoints converge upon a singular central device (Switch/Router).
-                        <ul>
-                            <li><em>Pros:</em> Isolated link disruptions do not drop external client nodes. High connection rates.</li>
-                            <li><em>Cons:</em> Total reliance on the center unit creates a single point of structural system failure.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Network Layers:</strong> The intentional modular breakdown of communication processes into isolated stages.
-                        <ul>
-                            <li><em>Advantage:</em> Allows updates to low-level physical channel layers (e.g., swapping an Ethernet interface to Wi-Fi) without forcing complete application tier code rewrites.</li>
-                        </ul>
-                    </li>
+                    <li><strong>Linear Search:</strong> Checks each item one by one from the start. Works on <em>unordered</em> lists. Slow for large datasets.</li>
+                    <li><strong>Binary Search:</strong> Finds the middle item, discards the half where the target cannot be. <strong>List MUST be ordered first.</strong> Very fast.</li>
+                </ul>
+                <h3>Sorting:</h3>
+                <ul>
+                    <li><strong>Bubble Sort:</strong> Compares adjacent pairs and swaps them if they are in the wrong order. One full "pass" bubbles the largest item to the end. Very slow for large lists.</li>
                 </ul>
             </div>
 
-            <div class="card">
-                <h2>5. Essential AQA Application Protocols</h2>
-                <p>Networks manage communication channels via strict, standardized software rule schemas called <strong>Protocols</strong>:</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Protocol Name</th>
-                            <th>Functional Operational Purpose</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>HTTP / HTTPS</strong></td>
-                            <td>Coordinates hypertext document delivery requests across web servers.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>FTP</strong></td>
-                            <td>Manages explicit file transfer protocols between server directories.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>SMTP</strong></td>
-                            <td>Handles outbound electronic mail distribution across servers.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>IMAP</strong></td>
-                            <td>Coordinates synchronized mail client box folder retrieval schemas.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>TCP</strong></td>
-                            <td>Breaks streaming content data into numbered verification packets.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>IP</strong></td>
-                            <td>Manages physical destination logic path routing via IP mapping.</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Section 6: Number Bases -->
+            <div class="card full-width">
+                <h2>6. Number Bases & Binary Arithmetic</h2>
+                <div class="grid-container" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <h3>Binary Arithmetic</h3>
+                        <ul>
+                            <li><strong>Addition Rules:</strong> <code>1+1 = 10</code> (0, carry 1), <code>1+1+1 = 11</code> (1, carry 1).</li>
+                            <li><strong>Subtraction:</strong> AQA often tests this using Two's Complement addition.</li>
+                            <li><strong>Binary Shifts:</strong> Left shift multiplies by 2. Right shift divides by 2.</li>
+                            <li><strong>Signed Binary:</strong> Uses the Most Significant Bit (MSB) to represent positive (0) or negative (1).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Hexadecimal (Base-16)</h3>
+                        <p>Uses digits 0-9 and letters A-F (where A=10, F=15). Used by humans because it is shorter and easier to read than long binary strings.</p>
+                        <p><strong>Hex to Binary:</strong> Split the hex into digits. Convert each digit into a 4-bit binary <em>nibble</em>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 7: Media Representation -->
+            <div class="card full-width">
+                <h2>7. Representing Text, Images & Sound</h2>
+                <div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <h3>Text</h3>
+                        <ul>
+                            <li><strong>ASCII:</strong> Uses 7 bits. Can represent 128 characters (English).</li>
+                            <li><strong>Unicode:</strong> Uses 16 to 32 bits. Can represent every language character globally, plus emojis, but takes up more file space.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Images (Bitmaps)</h3>
+                        <ul>
+                            <li>Made of tiny dots called <strong>pixels</strong>.</li>
+                            <li><strong>Color Depth:</strong> Number of bits used per pixel. Higher depth = more colors but larger file size.</li>
+                            <li><strong>Resolution:</strong> Concentration of pixels.</li>
+                            <li><em>File Size = Width &times; Height &times; Color Depth</em></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Sound</h3>
+                        <ul>
+                            <li>Analogue sound waves are <strong>sampled</strong> at regular intervals to create digital data.</li>
+                            <li><strong>Sample Rate:</strong> Number of samples taken per second (Hz).</li>
+                            <li><strong>Bit Depth:</strong> Number of bits used to record each sample.</li>
+                            <li><em>Size = Sample Rate &times; Duration (s) &times; Bit Depth</em></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 8: Storage & Compression -->
+            <div class="card full-width">
+                <h2>8. Storage Measurements & Compression</h2>
+                <p><strong>Measurements:</strong> AQA strictly uses decimal calculations (divide by 1,000).</p>
+                <div class="formula-box">
+                    Bits &rarr; (&divide;8) &rarr; Bytes &rarr; (&divide;1000) &rarr; kB &rarr; (&divide;1000) &rarr; MB &rarr; (&divide;1000) &rarr; GB
+                </div>
+                <h3>Compression:</h3>
+                <p>Reduces file sizes to save storage space and decrease network download times.</p>
+                <ul>
+                    <li><strong>Lossless Compression:</strong> Compresses the file without losing any original data. When uncompressed, the file is exactly the same as the original (e.g., text documents, code files).</li>
+                    <li><strong>Lossy Compression:</strong> Permanently deletes unnoticeable data to heavily reduce file size. Once compressed, the original quality cannot be restored (e.g., JPEG images, MP3 audio).</li>
+                </ul>
             </div>
 
         </div>
-        <div class="card">
-                <h2>6. Boolean Logic Gates</h2>
-                <p>Computers use logic gates to control the flow of electrical signals inside circuits based on true/false inputs:</p>
-                <ul>
-                    <li><strong>AND Gate:</strong> Output is <code>True (1)</code> only if <strong>ALL</strong> inputs are True.
-                        <br><em>AQA Notation:</em> <code>A AND B</code>
-                    </li>
-                    <li><strong>OR Gate:</strong> Output is <code>True (1)</code> if <strong>AT LEAST ONE</strong> input is True.
-                        <br><em>AQA Notation:</em> <code>A OR B</code>
-                    </li>
-                    <li><strong>NOT Gate:</strong> Inverts the single input. If input is 1, output is <code>0</code>.
-                        <br><em>AQA Notation:</em> <code>NOT A</code>
-                    </li>
-                </ul>
-                <h3>Standard AQA Logic Gate Symbols:</h3>
-                
-
-[Image of AND OR and NOT logic gate symbols]
-
-            </div>
-
-            <div class="card">
-                <h2>7. Translators & Program Languages</h2>
-                <p>Computers can only physically execute low-level machine code (binary). Human programmers write code in high-level languages like Python. We must use translators to bridge the gap:</p>
-                <ul>
-                    <li><strong>High-Level Language:</strong> Written in a syntax close to English (e.g., Python). It is portable across different CPU architectures but must be translated before running.</li>
-                    <li><strong>Low-Level Language:</strong> Machine code (binary strings) or Assembly language. Directly matches specific CPU hardware registers. It runs incredibly fast but is very difficult for humans to write.</li>
-                </ul>
-                <h3>The Two Main Translators:</h3>
-                <ul>
-                    <li><strong>Compiler:</strong> Translates the entire high-level source code file all at once into an executable machine code file (e.g., an <code>.exe</code> file). It takes longer to compile initially, but the final file runs instantly without needing the original software code.</li>
-                    <li><strong>Interpreter:</strong> Translates and executes high-level source code <strong>line-by-line</strong>. If it encounters a syntax error on line 10, the program runs lines 1–9 perfectly before crashing. Python uses an interpreter, making debugging significantly easier for students.</li>
-                </ul>
-            </div>
-
-            <div class="card full-width">
-                <h2>8. Network Hardware & Transmission Media</h2>
-                <p>To construct a network, physical infrastructure components must be connected to move data packets reliably:</p>
-                <ul>
-                    <li><strong>Wireless Access Point (WAP):</strong> Uses radio waves to allow wireless devices (smartphones, laptops) to connect to a wired network.</li>
-                    <li><strong>Switch:</strong> Connects devices on a Local Area Network (LAN). It reads the destination <strong>MAC address</strong> of incoming data packets and smartly forwards them <em>only</em> to the specific device that requested them, reducing data traffic congestion.</li>
-                    <li><strong>Router:</strong> Connects completely separate networks together (such as connecting your home LAN to the massive public Internet WAN). It reads the destination <strong>IP address</strong> to route data packets across paths.</li>
-                    <li><strong>NIC (Network Interface Card):</strong> An internal hardware chip built into a device that physically formats and transmits data signals over the network. It holds the device's unchangeable, unique physical MAC address.</li>
-                </ul>
-                <h3>Wired Transmission Media Types:</h3>
-                <ul>
-                    <li><strong>Copper Twisted-Pair (Ethernet):</strong> Uses electrical signals transmitted down copper wires. It is cheap, flexible, and common in schools, but signals suffer from attenuation over distances greater than 100 meters.</li>
-                    <li><strong>Fibre-Optic Cable:</strong> Transmits pulses of light down ultra-thin strands of glass. It is incredibly fast, immune to electrical interference, and can cover massive global distances without losing signal strength, but it is expensive and fragile to install.</li>
-                </ul>
-            </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 GCSE Revision Platform. Optimized for Git Pages deployment.</p>
+        <p>&copy; 2026 AQA GCSE Revision Platform. Customized for Year 10.</p>
     </footer>
 
 </body>
