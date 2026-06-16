@@ -1,1 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQA GCSE Computer Science - Paper 2 Revision Hub</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --bg-color: #ecf0f1;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .alert-banner {
+            background-color: var(--accent-color);
+            color: white;
+            text-align: center;
+            padding: 0.75rem;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            .full-width {
+                grid-column: span 2;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.5rem;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f8f9fa;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .formula-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            font-family: monospace;
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AQA GCSE Computer Science</h1>
+        <p>Paper 2 Theoretical Framework Revision Hub</p>
+    </header>
+
+    <div class="alert-banner">
+        ⚠️ EXAM ALERT: Calculators are strictly NOT permitted on Paper 2. Show all working out!
+    </div>
+
+    <main>
+        <div class="grid-container">
+            
+            <div class="card">
+                <h2>1. CPU Architecture & The FDE Cycle</h2>
+                <p>The Central Processing Unit (CPU) executes instructions using the <strong>Fetch-Decode-Execute</strong> cycle:</p>
+                <ul>
+                    <li><strong>Fetch:</strong> The next instruction is retrieved from main memory (RAM).</li>
+                    <li><strong>Decode:</strong> The Control Unit (CU) splits and translates the instruction.</li>
+                    <li><strong>Execute:</strong> The Arithmetic Logic Unit (ALU) or system hardware carries out the processing action.</li>
+                </ul>
+                <h3>Core Hardware Components:</h3>
+                <ul>
+                    <li><strong>ALU:</strong> Executes all calculations and logic operations (<code>AND, OR, NOT</code>).</li>
+                    <li><strong>Control Unit (CU):</strong> Manages the timing and structural data control flow inside the CPU.</li>
+                    <li><strong>Registers:</strong> Super-fast internal storage slots used to hold current processing states.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>2. Memory Architecture & Volatility</h2>
+                <p>Systems rely on various tiers of memory to balance processing speed against persistence:</p>
+                <ul>
+                    <li><strong>RAM (Random Access Memory):</strong> <code>Volatile</code> main memory. Stores open operating system processes and application runtime states. Loses contents on power loss.</li>
+                    <li><strong>ROM (Read-Only Memory):</strong> <code>Non-Volatile</code> startup memory. Stores immutable factory initialization boot instructions (BIOS).</li>
+                    <li><strong>Secondary Storage:</strong> Permanent non-volatile storage necessary for archiving user system programs.</li>
+                </ul>
+                <h3>The 3 Storage Media Types:</h3>
+                <ul>
+                    <li><strong>Magnetic (HDD):</strong> Mechanical spinning discs. High capacity and lower financial cost, but slower read speeds and fragile.</li>
+                    <li><strong>Solid-State (SSD):</strong> Electrical flash memory chips. Extremely high speed, energy efficient, durable, but premium cost.</li>
+                    <li><strong>Optical (DVD):</strong> Laser reflection pitting. High physical portability, but small capacity boundaries and prone to scratching.</li>
+                </ul>
+            </div>
+
+            <div class="card full-width">
+                <h2>3. Data Representation: AQA Storage Unit Math</h2>
+                <p><strong>CRITICAL RULE:</strong> Under the AQA specification, calculations scale strictly using <strong>decimal prefixes</strong> (multiples of 1000). <code>Do not divide or multiply by 1024.</code></p>
+                
+                <div class="formula-box">
+                    Bits &rarr; (&divide;8) &rarr; Bytes &rarr; (&divide;1000) &rarr; Kilobytes (kB) &rarr; (&divide;1000) &rarr; Megabytes (MB) &rarr; (&divide;1000) &rarr; Gigabytes (GB)
+                </div>
+
+                <h3>Binary Bit Shifts:</h3>
+                <ul>
+                    <li><strong>Left Shift:</strong> Shifting bit placements by <code>n</code> places multiplies the equivalent target number evaluation by <code>2<sup>n</sup></code>.</li>
+                    <li><strong>Right Shift:</strong> Shifting bit placements by <code>n</code> places divides the equivalent target number evaluation by <code>2<sup>n</sup></code> (completely truncate/ignore any fractional remainder values).</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>4. Computer Network Design & Topologies</h2>
+                <p>A network setup dictates how interconnected devices physically or logically exchange parameters:</p>
+                <ul>
+                    <li><strong>Star Topology:</strong> All network endpoints converge upon a singular central device (Switch/Router).
+                        <ul>
+                            <li><em>Pros:</em> Isolated link disruptions do not drop external client nodes. High connection rates.</li>
+                            <li><em>Cons:</em> Total reliance on the center unit creates a single point of structural system failure.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Network Layers:</strong> The intentional modular breakdown of communication processes into isolated stages.
+                        <ul>
+                            <li><em>Advantage:</em> Allows updates to low-level physical channel layers (e.g., swapping an Ethernet interface to Wi-Fi) without forcing complete application tier code rewrites.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>5. Essential AQA Application Protocols</h2>
+                <p>Networks manage communication channels via strict, standardized software rule schemas called <strong>Protocols</strong>:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Protocol Name</th>
+                            <th>Functional Operational Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>HTTP / HTTPS</strong></td>
+                            <td>Coordinates hypertext document delivery requests across web servers.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FTP</strong></td>
+                            <td>Manages explicit file transfer protocols between server directories.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SMTP</strong></td>
+                            <td>Handles outbound electronic mail distribution across servers.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IMAP</strong></td>
+                            <td>Coordinates synchronized mail client box folder retrieval schemas.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TCP</strong></td>
+                            <td>Breaks streaming content data into numbered verification packets.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IP</strong></td>
+                            <td>Manages physical destination logic path routing via IP mapping.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 GCSE Revision Platform. Optimized for Git Pages deployment.</p>
+    </footer>
+
+</body>
+</html>
